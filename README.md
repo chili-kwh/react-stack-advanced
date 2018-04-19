@@ -4,7 +4,7 @@
 
 TODO:
 - React Portal
-- Redux store 的动态注入 
+- Redux store 的动态注入
 - React 16
 - Redux中间件（redux-thunk／redux-saga）
 - React-Router 4
