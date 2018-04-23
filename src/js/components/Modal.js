@@ -29,7 +29,7 @@ class Modal extends React.Component {
             <CSSTransition
                 in={visible}
                 timeout={300}
-                classNames='modal'
+                classNames='modal-transition'
                 mountOnEnter
                 // unmountOnExit 在完成退出后卸载组件。默认情况下，子组件在达到“退出”状态后保持挂载状态
             >
