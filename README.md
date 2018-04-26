@@ -7,3 +7,11 @@
 
 - React Transition Group - 2018.4.23
   http://reactcommunity.org/react-transition-group/
+
+- React-Router 4 & dynamic imports
+  https://github.com/jamiebuilds/react-loadable
+  http://reacttraining.cn/web/guides/quick-start
+  https://reactjs.org/docs/code-splitting.html
+
+
+

@@ -16,6 +16,4 @@ class PageHome extends React.Component {
     }
 }
 
-export {
-    PageHome
-}
+export default PageHome;

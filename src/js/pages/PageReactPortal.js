@@ -34,6 +34,4 @@ class PageReactPortal extends React.Component {
     }
 }
 
-export {
-    PageReactPortal
-}
+export default PageReactPortal;

@@ -4,7 +4,6 @@ TODO:
 - Redux store 的动态注入
 - Redux中间件（redux-thunk／redux-saga）
 - HOC／render Props
-- React-Router 4
 - webpack 4 / dll
 - 缓存处理
 - 移动端事件
