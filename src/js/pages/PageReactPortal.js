@@ -1,30 +1,20 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './sass/index.css';
-import {Modal} from "./js/components";
+/**
+ * Created by Liqi on 18/4/26.
+ */
 
-function Child() {
-    return (
-        <div style={{color: '#fff'}}>
-            Child
-        </div>
-    )
-}
+import React from 'react';
+import {Modal} from "../components/index";
 
-class App extends Component {
+
+class PageReactPortal extends React.Component {
     state = {
         modalVisible: false
-    }
+    };
 
     render() {
         const {modalVisible} = this.state;
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
+            <div>
                 <p className="App-intro">
                     React Portal Test
                 </p>
@@ -38,11 +28,12 @@ class App extends Component {
                     onClose={() => {
                         this.setState({modalVisible: false})
                     }}>
-                    <Child/>
                 </Modal>
             </div>
         );
     }
 }
 
-export default App;
+export {
+    PageReactPortal
+}
