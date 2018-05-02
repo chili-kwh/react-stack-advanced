@@ -9,9 +9,9 @@
   http://reactcommunity.org/react-transition-group/
 
 - React-Router 4 & dynamic imports
-  https://github.com/jamiebuilds/react-loadable
   http://reacttraining.cn/web/guides/quick-start
   https://reactjs.org/docs/code-splitting.html
-
+  https://github.com/jamiebuilds/react-loadable
+  https://www.jianshu.com/p/697669781276
 
 
