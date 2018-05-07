@@ -2,6 +2,15 @@
   "name": "react-stack-advanced",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "wstart": "webpack-dev-server --config webpack.config.dev.js",
+    "wbuild": "rm -rf ./dist-prepare && webpack --config webpack.config.online.js",
+    "server": "node server.js --open"
+  },
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -10,12 +19,18 @@
     "react-transition-group": "^2.3.1"
   },
   "devDependencies": {
-    "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "react-scripts": "1.1.4",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4"
   }
 }

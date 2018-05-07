@@ -2,15 +2,21 @@ import React from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import * as allUrls from "./../setRoutes";
 import '../../sass/pages/App.css';
-
+import {LRoute} from "../LRoute";
+import PageHome from "./PageHome";
 
 function MakeRoutes(allUrls) {
     let allRoutes = [];
     Object.keys(allUrls).forEach((key, i) => {
         const _route = allUrls[key];
-        allRoutes.push(
-            <Route path={_route.path} component={_route.getComponent()} key={i}/>
-        )
+        if(_route instanceof LRoute){
+            console.log(allUrls);
+            console.log(key);
+            console.log(_route);
+            allRoutes.push(
+                <Route path={_route.path} component={_route.getComponent()} key={i}/>
+            )
+        }
     });
     return allRoutes;
 }
@@ -22,6 +28,7 @@ class App extends React.Component {
             <div className="App">
                 <BrowserRouter>
                     <Switch>
+                        <Route path='/home' component={PageHome}/>
                         <Redirect exact from="/" to='/home'/>
                         {MakeRoutes(allUrls)}
                     </Switch>
