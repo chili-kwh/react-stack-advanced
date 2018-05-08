@@ -2,6 +2,7 @@
 // const webpack = require('webpack'); //访问内置的插件
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 function resolve(dir) {
@@ -14,7 +15,7 @@ const config = {
     output: {
         // filename: '[name].[hash].js',  //name代表entry对应的名字; hash代表 整个app打包完成后根据内容加上hash。一旦整个文件内容变更，hash就会变化
         filename: '[name].[hash].js',
-        path: resolve('dist-prepare'),
+        path: resolve('./../dist-prepare'),
         publicPath: '' // 静态资源文件引用时的路径（加在引用静态资源前面的）
 
     },
@@ -24,7 +25,7 @@ const config = {
                 test: /\.js$/, //使用loader的目标文件。这里是.js
                 loader: 'babel-loader',
                 include: [
-                    resolve('src')
+                    resolve('./../src')
                 ],
                 // exclude: [
                 //     path.join(__dirname, '../node_modules')  // 由于node_modules都是编译过的文件，这里我们不让babel去处理其下面的js文件
@@ -33,8 +34,16 @@ const config = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    'sass-loader'
                 ]
             },
             /*{
@@ -51,6 +60,12 @@ const config = {
         new HtmlWebpackPlugin({
             // title: '',
             template: './src/index.html'
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ],
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import * as allUrls from "./../setRoutes";
-import '../../sass/pages/App.css';
+import '../../sass/pages/App.scss';
 import {LRoute} from "../LRoute";
 import PageHome from "./PageHome";
 
