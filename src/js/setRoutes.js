@@ -11,10 +11,10 @@ export const routeHome = new LRoute({});
 export const routeHome = LRouteF({});
 */
 
-// export const routeHome = new LRoute({
-//     path: '/home',
-//     component: () => import('./pages/PageHome'),
-// });
+export const routeHome = new LRoute({
+    path: '/home',
+    component: () => import('./pages/PageHome'),
+});
 
 export const routeReactPortal = new LRoute({
     path: '/react-portal',

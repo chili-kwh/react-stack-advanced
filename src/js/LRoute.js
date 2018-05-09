@@ -49,7 +49,7 @@ class LRoute {
         this.component = component;
         this.delay = delay;
         this.timeout = timeout;
-        this.loading = loading;
+        this.loading = loading; // 等待／转场动画
     }
 
     getComponent() {

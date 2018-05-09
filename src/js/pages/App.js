@@ -10,9 +10,8 @@ function MakeRoutes(allUrls) {
     Object.keys(allUrls).forEach((key, i) => {
         const _route = allUrls[key];
         if(_route instanceof LRoute){
-            console.log(allUrls);
             console.log(key);
-            console.log(_route);
+            // console.log(_route);
             allRoutes.push(
                 <Route path={_route.path} component={_route.getComponent()} key={i}/>
             )
@@ -28,7 +27,6 @@ class App extends React.Component {
             <div className="App">
                 <BrowserRouter>
                     <Switch>
-                        <Route path='/home' component={PageHome}/>
                         <Redirect exact from="/" to='/home'/>
                         {MakeRoutes(allUrls)}
                     </Switch>
