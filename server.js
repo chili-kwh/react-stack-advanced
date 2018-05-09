@@ -3,12 +3,13 @@
  */
 "use strict";
 
+// "webpack-dev-server --config ./webpack/webpack.config.dev.js"
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const openBrowser = require('react-dev-utils/openBrowser');
 const HTTPS_ENABLE = !!process.env.HTTPS;
 const URL_PROTOCOL = HTTPS_ENABLE ? "https" : 'http';
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8848;
 const HOST = process.env.HOST || '0.0.0.0';
 const URI = `${URL_PROTOCOL}://${HOST}:${PORT}`;
 const config = require('./webpack/webpack.config.dev.js');
@@ -20,7 +21,7 @@ const options = {
     },*/
     publicPath: "/",
     hot: true,
-    contentBase: './dist-prepare',
+    // contentBase: './dist-prepare',
     host: HOST
 };
 

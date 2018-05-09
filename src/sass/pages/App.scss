@@ -1,5 +1,18 @@
+
+.test-pic {
+  width: 100%;
+  height: 280px;
+  //background: url("../../../imgs/banner_flop.png");
+}
+
+@font-face {
+  font-family: 'campton-bold';
+  src: url('../../../fonts/campton_bold.otf');
+}
+
 .App {
   text-align: center;
+  font-family: 'campton-bold';
 }
 
 .App-logo {
@@ -23,6 +36,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

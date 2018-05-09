@@ -5,6 +5,8 @@
 import React from 'react';
 import {Modal} from "../components/index";
 
+const urlLoaderTest = require("./../../../imgs/redBag_2x.png")
+const fileLoaderTest = require("./../../../imgs/banner_flop.png")
 
 class PageReactPortal extends React.Component {
     state = {
@@ -15,6 +17,9 @@ class PageReactPortal extends React.Component {
         const {modalVisible} = this.state;
         return (
             <div>
+                {/*<div className="test-pic"/>*/}
+                <img src={urlLoaderTest} alt=""/>
+                <img src={fileLoaderTest} alt=""/>
                 <p className="App-intro">
                     React Portal Test
                 </p>

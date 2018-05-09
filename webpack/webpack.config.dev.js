@@ -21,8 +21,6 @@ function resolve(dir) {
 }
 
 
-
-
 const config = {
     mode: 'development',
     entry: './src/entry.js',
@@ -60,6 +58,22 @@ const config = {
                     'sass-loader'
                 ],
             },
+            {
+                test: /\.(png|jpe?g|ico|otf|gif|svg|woff|ttf|eot)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            // fallback: 'file-loader',
+                            // Default file-loader config
+                            name:'[path][name].[ext]',
+                            outputPath: '/',
+                            publicPath: '/'
+                        }
+                    }
+                ]
+            }
             /*{
                 test: /\.css$/,
                 use: [
