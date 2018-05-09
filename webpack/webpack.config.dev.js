@@ -85,18 +85,6 @@ const config = {
             }*/
         ]
     },
-    devServer: {
-        historyApiFallback: true, // 保证任何url请求都返回index.html(默认情况下，只有/才返回index.html，这个为true可以保证例如/frontend/home等都返回html)
-        publicPath: "/",
-        hot: true,
-
-        /*historyApiFallback:{
-            index:'./src/index.html'
-        },*/
-        // contentBase: './dist-prepare',
-        // contentBase: resolve('dist-prepare'),
-        // publicPath: "/assets/"
-    },
     plugins: [
         new HtmlWebpackPlugin({
             // title: '',
