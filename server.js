@@ -12,7 +12,7 @@ const URL_PROTOCOL = HTTPS_ENABLE ? "https" : 'http';
 const PORT = process.env.PORT || 8848;
 const HOST = process.env.HOST || '0.0.0.0';
 const URI = `${URL_PROTOCOL}://${HOST}:${PORT}`;
-const config = require('./webpack/webpack.config.dev.js');
+const config = require('./webpack.config.dev.js');
 const options = {
     historyApiFallback: true,
     // 保证任何url请求都返回index.html(默认情况下，只有/才返回index.html，这个为true可以保证例如/frontend/home等都返回html)

@@ -4,6 +4,8 @@
 
 import React from 'react';
 import {Modal} from "../components/index";
+import { cube } from './../tool/math.js';
+
 
 const urlLoaderTest = require("./../../../imgs/redBag_2x.png")
 const fileLoaderTest = require("./../../../imgs/banner_flop.png")
@@ -15,11 +17,13 @@ class PageReactPortal extends React.Component {
 
     render() {
         const {modalVisible} = this.state;
+        // cosnole.error('I get called from print.js!');
         return (
             <div>
                 {/*<div className="test-pic"/>*/}
                 <img src={urlLoaderTest} alt=""/>
                 <img src={fileLoaderTest} alt=""/>
+                {cube(5)}
                 <p className="App-intro">
                     React Portal Test
                 </p>

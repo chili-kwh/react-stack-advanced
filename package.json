@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=development node server.js",
-    "build": "rm -rf ./dist-prepare && webpack --config ./webpack/webpack.config.online.js",
+    "build": "webpack --config ./webpack.config.online.js",
     "cstart": "react-scripts start",
     "cbuild": "react-scripts build",
     "ctest": "react-scripts test --env=jsdom",
@@ -23,6 +23,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
@@ -32,9 +33,11 @@
     "react-scripts": "1.1.4",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
   }
 }
