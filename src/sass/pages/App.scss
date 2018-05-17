@@ -1,3 +1,6 @@
+@import "test/index";
+// scss引入图片路径问题
+// resolution: 加入resolve-url-loader
 
 .test-pic {
   width: 100%;

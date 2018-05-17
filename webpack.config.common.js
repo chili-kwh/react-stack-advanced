@@ -48,8 +48,8 @@ const config = {
                             // fallback: 'file-loader',
                             // Default file-loader config
                             name: '[path][name].[ext]',
-                            outputPath: '/',
-                            publicPath: '/'
+                            // outputPath: '/',
+                            // publicPath: '/'
                         }
                     }
                 ]
