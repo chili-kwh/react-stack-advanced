@@ -53,12 +53,18 @@ const config = {
                         }
                     }
                 ]
-            }
+            },
+
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            title: 'Custom template',
+            filename: 'index.html',
+            template: './src/index.ejs',
+            templateParameters: {
+                a: '111'
+            }
         }),
     ],
 };

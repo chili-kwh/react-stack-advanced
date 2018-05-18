@@ -1,12 +1,6 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.config.common.js');
-
-
-function resolve(dir) {
-    return path.resolve(__dirname, dir)
-}
 
 
 const config = merge(commonConfig, {

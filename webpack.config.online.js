@@ -1,15 +1,9 @@
-const path = require('path');
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.config.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-
-
-function resolve(dir) {
-    return path.resolve(__dirname, dir)
-}
 
 const config = merge(commonConfig, {
     mode: 'production',
@@ -27,8 +21,9 @@ const config = merge(commonConfig, {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    'sass-loader'
+                    'css-loader',
+                    'resolve-url-loader',
+                    'sass-loader?sourceMap'
                 ]
             },
         ]
