@@ -12,12 +12,12 @@ export const routeHome = LRouteF({});
 */
 
 export const routeHome = new LRoute({
-    path: '/home',
+    path: '/fe/home',
     component: () => import('./pages/PageHome'),
 });
 
 export const routeReactPortal = new LRoute({
-    path: '/react-portal',
+    path: '/fe/react-portal',
     component: () => import('./pages/PageReactPortal')
 });
 

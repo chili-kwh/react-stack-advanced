@@ -27,6 +27,10 @@ const config = {
     module: {
         rules: [
             {
+                include: path.resolve("node_modules", "lodash"),
+                sideEffects: false
+            },
+            {
                 test: /\.js$/, //使用loader的目标文件。这里是.js
                 loader: 'babel-loader',
                 // pand 未编译，要转译一遍

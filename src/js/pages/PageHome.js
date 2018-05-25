@@ -10,7 +10,7 @@ class PageHome extends React.Component {
     render() {
         return (
             <div>
-                <Link to="/react-portal">portal</Link>
+                <Link to="/fe/react-portal">portal</Link>
             </div>
         );
     }

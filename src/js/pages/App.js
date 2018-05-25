@@ -27,7 +27,7 @@ class App extends React.Component {
             <div className="App">
                 <BrowserRouter>
                     <Switch>
-                        <Redirect exact from="/" to='/home'/>
+                        <Redirect exact from="/" to='/fe/home'/>
                         {MakeRoutes(allUrls)}
                     </Switch>
                 </BrowserRouter>

@@ -21,7 +21,7 @@ class PageReactPortal extends React.Component {
         // cosnole.error('I get called from print.js!');
         // cosnole.error('I get called from print.j!');
         return (
-            <div>
+            <div className='pageReactPortal'>
                 <div className="test-pic2"/>
                 <div className="test-pic"/>
                 <img src={urlLoaderTest} alt=""/>

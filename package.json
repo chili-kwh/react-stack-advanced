@@ -5,6 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=development node server.js",
     "build": "webpack --config ./webpack.config.online.js",
+    "start-proxy": "NODE_ENV=development API_PROXY=https://dev.xiongmaojinku.com node server3.js",
     "cstart": "react-scripts start",
     "cbuild": "react-scripts build",
     "ctest": "react-scripts test --env=jsdom",
