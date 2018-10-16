@@ -66,9 +66,9 @@ const config = {
             title: 'Custom template',
             filename: 'index.html',
             template: './src/index.ejs',
-            templateParameters: {
-                a: '111'
-            }
+            // templateParameters: {
+            //     a: '111'
+            // }
         }),
     ],
 };

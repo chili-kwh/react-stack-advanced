@@ -21,3 +21,8 @@ export const routeReactPortal = new LRoute({
     component: () => import('./pages/PageReactPortal')
 });
 
+export const routeCarTest = new LRoute({
+    path: '/fe/car-test',
+    component: () => import('./pages/PageCarTest')
+});
+

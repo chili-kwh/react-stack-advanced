@@ -4,6 +4,7 @@ TODO:
 - Redux store 的动态注入
 - Redux中间件（redux-thunk／redux-saga）
 - HOC／render Props
+    https://github.com/acdlite/recompose
 - webpack 4 / dll
 - 缓存处理
 - 移动端事件
