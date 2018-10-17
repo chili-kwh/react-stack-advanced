@@ -6,6 +6,7 @@ import App from './js/pages/App';
 import {isPc, isIOS, isIPhoneX, isAndroid} from "./js/tool";
 // import registerServiceWorker from './js/registerServiceWorker';
 
+window.Swiper = Swiper
 
 function addDeviceClassName (){
     const oBody = document.querySelector('body');
