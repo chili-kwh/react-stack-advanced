@@ -16,6 +16,7 @@ class TestCard extends React.Component {
                         answers.map((e, i) => {
                             return (
                                 <div
+                                    className="swiper-no-swiping"
                                     key={i}
                                     onTouchEnd={() => {
                                         handleChoose({

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import {MView} from "../../components/index";
 import {TestCard} from "./TestCard";
-import {QUESTIONS} from "./TestConst";
+import {QUESTIONS, RESULTS} from "./TestConst";
 
 class PageCarTest extends React.Component {
 
@@ -24,7 +24,8 @@ class PageCarTest extends React.Component {
         const _this = this;
         this.mySwiper = new window.Swiper('.swiper-container', {
             direction: 'vertical',
-            noSwiping : true,
+            noSwiping : true, // TODO: 不好使？？
+            // noSwipingClass : 'swiper-no-swiping',
             on: {
                 slideChangeTransitionEnd: function () {
                     _this.setIndex(this.activeIndex)
@@ -78,6 +79,11 @@ class PageCarTest extends React.Component {
                 <div className="scroll pageCarTest">
                     <div className="pageCarTest-wrapper swiper-container">
                         <div className="swiper-wrapper">
+                            <div className="swiper-slide" key='frontPage'>
+                                result:
+                                {this.state.resultKey}
+                                {RESULTS[this.state.resultKey]}
+                            </div>
                             {
                                 questionMap.map((elem, index) => {
                                     return (
@@ -94,9 +100,10 @@ class PageCarTest extends React.Component {
                             }
                             {
                                 this.state.resultKey &&
-                                <div className="swiper-slide" key={'result'}>
+                                <div className="swiper-slide" key='resultPage'>
                                     result:
                                     {this.state.resultKey}
+                                    {RESULTS[this.state.resultKey]}
                                 </div>
                             }
                         </div>
