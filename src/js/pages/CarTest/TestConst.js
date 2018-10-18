@@ -4,7 +4,7 @@ const QUESTIONS = {
         question: '你会接受二手车吗?',
         answers: [
             {desc: '能', toQues: 2},
-            {desc: '不能', toResult: 'A'},
+            {desc: '不能', toQues: 3},
         ]
     },
     2: {
@@ -18,6 +18,14 @@ const QUESTIONS = {
     3: {
         key: 3,
         question: '你有很多的钱吗?',
+        answers: [
+            {desc: '有', toQues: 4},
+            {desc: '没有', toResult: 'D'},
+        ]
+    },
+    4: {
+        key: 4,
+        question: '4你有很多的钱吗?',
         answers: [
             {desc: '有', toResult: 'C'},
             {desc: '没有', toResult: 'D'},

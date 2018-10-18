@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {getWindowSize} from "../../tool/index";
 import {MView} from "../../components/index";
 import {TestCard} from "./TestCard";
 import {QUESTIONS} from "./TestConst";
 
 class PageCarTest extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             currIndex: 0,
-            questionMap: [QUESTIONS[1]]
+            questionMap: [QUESTIONS[1]],
+            resultKey: null,
         }
+        this.userChoiceArr = []
     }
 
     componentDidMount() {
@@ -21,51 +21,55 @@ class PageCarTest extends React.Component {
     }
 
     initSwiper() {
-        const initOptions = {
+        const _this = this;
+        this.mySwiper = new window.Swiper('.swiper-container', {
             direction: 'vertical',
-            // TODO：禁止后滑
-            // allowSlideNext : false,
-            // speed: 300,
-            // observer: true,
-            // onSlideChangeStart: (swiper) => {
-            //     this.setIndex(swiper.realIndex);
-            // },
-            // onSlideChangeEnd: (swiper) => {
-            //     this.setIndex(swiper.realIndex);
-            // },
-            on:{
-                slidePrevTransitionEnd: this.handleToPrevPage
+            noSwiping : true,
+            on: {
+                slideChangeTransitionEnd: function () {
+                    _this.setIndex(this.activeIndex)
+                },
             },
-        };
-        this.mySwiper = new window.Swiper('.swiper-container', initOptions);
-        // this.setIndex(this.mySwiper.realIndex);
+        });
     }
 
-    handleToPrevPage = () => {
-        this.state.currIndex >=1 && //TODO
+    setIndex = (index) => {
         this.setState({
-            currIndex: this.state.currIndex - 1,
-            questionMap: [...this.state.questionMap.slice(0,-1)]
-        }, ()=>{
-            this.mySwiper.updateSlides();
+            currIndex: index,
         })
     }
 
-    handleToNextPage = (pageKey) => {
-        console.log(pageKey)
-        this.setState({
-            currIndex: this.state.currIndex + 1,
-            questionMap: [...this.state.questionMap, QUESTIONS[pageKey]]
-        }, ()=>{
-            this.mySwiper.updateSlides();
+    updatePages = (questionKey, resultKey = null) => {
+        // 如果传入questionKey，questionMap删除后边问题 && 插入新问题，清空当前答案
+        // 如果传入resultKey， questionMap删除后边问题，设置resultKey
+        this.setState(
+            questionKey
+                ? {
+                    questionMap: [...this.state.questionMap.slice(0, this.state.currIndex + 1), QUESTIONS[questionKey]],
+                    resultKey
+                }
+                : {
+                    questionMap: [...this.state.questionMap.slice(0, this.state.currIndex + 1)],
+                    resultKey
+                }, () => {
+                this.mySwiper.updateSlides();
+                this.mySwiper.slideNext();
+            })
+    }
+
+    saveUserChoice = (chosenIndex) => {
+        this.userChoiceArr = this.userChoiceArr.splice(0, this.state.currIndex) //清空后边答案
+        this.userChoiceArr[this.state.currIndex] = chosenIndex
+    }
+
+    handleToNextPage = ({chosenIndex, questionKey, resultKey}) => {
+        if (this.userChoiceArr[this.state.currIndex] !== chosenIndex) { // 答案变了||之前没答过
+            this.saveUserChoice(chosenIndex) // 保存答案
+            this.updatePages(questionKey, resultKey)
+        } else {
             this.mySwiper.slideNext();
-        })
+        }
     }
-
-    handleToResultPage = (resultKey)=>{
-        console.log(resultKey)
-    }
-
 
     render() {
         const {questionMap} = this.state;
@@ -74,32 +78,27 @@ class PageCarTest extends React.Component {
                 <div className="scroll pageCarTest">
                     <div className="pageCarTest-wrapper swiper-container">
                         <div className="swiper-wrapper">
-                        {
-                            questionMap.map(elem=>{
-                                // const elem = questionMap[key]
-                                const answerArr = elem.answers.map(e=>e.desc)
-                                console.log(answerArr)
-                                const handleArr = elem.answers.map(e=>{
-                                    if(e.toQues){
-                                        return ()=>this.handleToNextPage(e.toQues)
-                                    }
-                                    if(e.toResult){
-                                        return ()=>this.handleToResultPage(e.toResult)
-                                    }
+                            {
+                                questionMap.map((elem, index) => {
+                                    return (
+                                        <div className="swiper-slide" key={elem.key}>
+                                            <TestCard
+                                                question={elem.question}
+                                                answers={elem.answers}
+                                                selectIndex={this.userChoiceArr[index]}
+                                                handleChoose={this.handleToNextPage}
+                                            />
+                                        </div>
+                                    )
                                 })
-                                console.log(handleArr)
-
-                                return (
-                                    <div className="swiper-slide" key={elem.key}>
-                                        <TestCard
-                                            question={elem.question}
-                                            answers={answerArr}
-                                            handles={handleArr}
-                                        />
-                                    </div>
-                                )
-                            })
-                        }
+                            }
+                            {
+                                this.state.resultKey &&
+                                <div className="swiper-slide" key={'result'}>
+                                    result:
+                                    {this.state.resultKey}
+                                </div>
+                            }
                         </div>
 
                     </div>

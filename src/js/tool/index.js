@@ -85,5 +85,6 @@ export {
     getWindowSize,
     isPc,
     isIOS,
+    isIPhoneX,
     isAndroid
 }
