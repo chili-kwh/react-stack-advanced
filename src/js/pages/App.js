@@ -4,6 +4,8 @@ import * as allUrls from "./../setRoutes";
 // import '../../sass/pages/App.scss';
 import {LRoute} from "../LRoute";
 import PageHome from "./PageHome";
+import PageCarTest from "./CarTest/PageCarTest";
+
 
 function MakeRoutes(allUrls) {
     let allRoutes = [];
@@ -25,12 +27,13 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <BrowserRouter>
+                <PageCarTest/>
+                {/*<BrowserRouter>
                     <Switch>
-                        <Redirect exact from="/" to='/fe/home'/>
+                        <Redirect exact from="/" to='/fe/car-test'/>
                         {MakeRoutes(allUrls)}
                     </Switch>
-                </BrowserRouter>
+                </BrowserRouter>*/}
             </div>
         );
     }

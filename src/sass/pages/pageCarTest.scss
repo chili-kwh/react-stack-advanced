@@ -1,15 +1,209 @@
-//.pageCarTest{
-//  width: 1rem;
-//  height: 1rem;
-//  background-color: #ff6700;
-//}
-
-.pageCarTest-wrapper{
+.pageCarTest-wrapper {
   height: 100%;
 }
 
-.pageCarTest-page{
+.pageCarTest-swiper {
+  //width: 100%;
+  //height: 100%;
+}
+
+.pageCarTest-frontPage {
   width: 100%;
   height: 100%;
-  background: #ff6700;
+  background: url("../../../imgs/carTest/front.jpg") no-repeat top center;
+  background-size: cover;
+}
+
+.pageCarTest-card {
+  width: 100%;
+  height: 100%;
+  background: url("../../../imgs/carTest/bg.jpg") no-repeat bottom center;
+  background-size: cover;
+  overflow: auto;
+}
+
+.swiper-slide-active {
+  .pageCarTest-ques-option,
+  .pageCarTest-ques-title,
+  .pageCarTest-result-anwser,
+  .pageCarTest-result-pic-wrapper {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.pageCarTest-ques {
+  position: relative;
+  margin: 12% 10%;
+  &-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &-title {
+    transition: all 1s ease-in-out;
+    transform: translateY(-100px);
+    font-family: 'black';
+    font-size: 28px;
+    line-height: 1.6;
+    text-align: justify;
+    letter-spacing: 4px;
+    color: #50453c;
+  }
+  &-optionWrapper {
+    margin-top: 26px;
+  }
+  &-option {
+    transform: translateY(400px);
+    position: relative;
+    font-family: content;
+    font-weight: bolder;
+    font-size: 19px;
+    line-height: 1.9;
+    letter-spacing: 4px;
+    color: #50453c;
+    border: 3px solid #5a412d;
+    border-radius: 54px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+    background-image: linear-gradient(-45deg, #ffc600, #ffe600);
+    margin: 16px 24px;
+    text-align: center;
+  }
+  .arrow::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 34px;
+    top: 1px;
+    left: -35px;
+    background: url("../../../imgs/carTest/arrow.png") no-repeat center;
+    background-size: contain;
+  }
+}
+
+.pageCarTest-quesImg {
+  width: 100%;
+  opacity: 0.9;
+}
+
+//.pageCarTest-quesBg {
+//  width: 80%;
+//  margin: 12% 10%;
+//
+//  padding-bottom: 108%;
+//  background: url("../../../imgs/carTest/bgb.png") no-repeat;
+//  background-size: contain;
+//}
+
+.pageCarTest-frontPage-btnWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10%;
+  .btn {
+    width: 70%;
+    height: 54px;
+    border: 3px solid #5a412d;
+    border-radius: 54px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .16);
+    background-image: linear-gradient(-45deg, #ffc600, #ffe600);
+    color: #564538;
+    font-size: 25px;
+    line-height: 54px;
+    text-align: center;
+    letter-spacing: 2.3px;
+    font-family: black;
+  }
+}
+
+.pageCarTest-result {
+  height: 100%;
+  background: rgb(254, 188, 64);
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: space-between;
+  padding: 40px 0;
+  &-title {
+    color: #564538;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+    letter-spacing: 2.3px;
+    font-family: black;
+  }
+  &-pic {
+    //margin: 30px 0 0;
+    width: 85%;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+  }
+  &-pic-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    transition: all 0.4s ease-out;
+    transform: translateY(-400px);
+    opacity: 0;
+  }
+}
+
+.pageCarTest-result-anwser {
+  margin: 10px 12px 0;
+  position: relative;
+  bottom: -55px;
+  transition: all 0.6s ease-in-out;
+  transform: translateY(200px);
+  &-pic {
+    width: 100%;
+  }
+  &-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 8px 16px 0;
+    display: flex;
+    align-items: center;
+    font-family: 'content';
+    line-height: 1.6;
+    font-size: 18px;
+    text-align: justify;
+  }
+}
+
+.pageCarTest-result-rrcPic {
+  height: 200px;
+  margin-left: 20px;
+}
+
+.pageCarTest-result-rrcPic2 {
+  //height: 160px;
+  //width: 120px;
+  height: 140px;
+  width: 140px;
+  //margin-left: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.pageCarTest-result-content {
+  position: relative;
+}
+
+.pageCarTest-result-rrc {
+  position: absolute;
+  //z-index: 1;
+  top: -55px;
 }

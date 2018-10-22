@@ -1,10 +1,10 @@
 const QUESTIONS = {
     1: {
         key: 1,
-        question: '你买二手车是为了什么？',
+        question: '你买二手车更倾向于什么？',
         answers: [
-            {desc: '为了情怀', toQues: 2},
-            {desc: '为了实用', toQues: 10},
+            {desc: '情怀', toQues: 2},
+            {desc: '实用', toQues: 10},
         ]
     },
     2: {
@@ -89,7 +89,7 @@ const QUESTIONS = {
             {desc: '韩系', toQues: 15},
             {desc: '美系', toQues: 16},
             {desc: '德系', toQues: 17},
-            {desc: '其他自主品牌', toQues: 18},
+            // {desc: '其他自主品牌', toQues: 18},
         ]
     },
     12: {
