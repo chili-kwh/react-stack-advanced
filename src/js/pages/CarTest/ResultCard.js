@@ -63,9 +63,9 @@ class ResultCard extends React.Component {
                     </div>
                 </div>
                 </div>
-                <div className="pageCarTest-result-next" onTouchEnd={()=>{
+{/*                <div className="pageCarTest-result-next" onTouchEnd={()=>{
                     this.props.handleNextTouch()
-                }}/>
+                }}/>*/}
                 {/*<img src={NEXT} alt=""/>*/}
             </div>
         )

@@ -126,12 +126,12 @@ class PageCarTest extends React.Component {
                                     <ResultCard resultKey={this.state.resultKey} handleNextTouch={()=>{this.mySwiper.slideNext()}}/>
                                 </div>
                             }
-                            {
+                            {/*{
                                 this.state.resultKey &&
                                 <div className="pageCarTest-swiper swiper-slide" key='summaryPage'>
                                     <SummaryCard resultKey={this.state.resultKey}/>
                                 </div>
-                            }
+                            }*/}
                         </div>
 
                     </div>
