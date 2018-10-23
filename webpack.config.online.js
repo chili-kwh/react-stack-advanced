@@ -8,6 +8,9 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const config = merge(commonConfig, {
     mode: 'production',
     devtool: 'source-map',
+    output: {
+        publicPath: './', // 静态资源文件引用时的路径（加在引用静态资源前面的）
+    },
     module: {
         rules: [
             {
@@ -24,6 +27,22 @@ const config = merge(commonConfig, {
                     'css-loader',
                     'resolve-url-loader',
                     'sass-loader?sourceMap'
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|ico|otf|gif|svg|woff|ttf|eot)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            // fallback: 'file-loader',
+                            // Default file-loader config
+                            name: '[path][name].[ext]',
+                            outputPath: '/asset',
+                            publicPath: './asset'
+                        }
+                    }
                 ]
             },
         ]

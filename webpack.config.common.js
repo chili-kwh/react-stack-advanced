@@ -20,9 +20,8 @@ const config = {
         filename: '[name].[hash].js',
         //name代表entry对应的名字; hash代表 整个app打包完成后根据内容加上hash。一旦整个文件内容变更，hash就会变化
         path: resolve('docs'),
-        publicPath: '/', // 静态资源文件引用时的路径（加在引用静态资源前面的）
+        // publicPath: './', // 静态资源文件引用时的路径（加在引用静态资源前面的）
         chunkFilename: 'chunk.[name].[id].[chunkhash].js',
-
     },
     module: {
         rules: [
@@ -42,23 +41,6 @@ const config = {
                     resolve('node_modules/pand')
                 ]
             },
-            {
-                test: /\.(png|jpe?g|ico|otf|gif|svg|woff|ttf|eot)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            // fallback: 'file-loader',
-                            // Default file-loader config
-                            name: '[path][name].[ext]',
-                            outputPath: '/',
-                            publicPath: '/'
-                        }
-                    }
-                ]
-            },
-
         ]
     },
     plugins: [

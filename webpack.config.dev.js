@@ -5,6 +5,9 @@ const commonConfig = require('./webpack.config.common.js');
 
 const config = merge(commonConfig, {
     mode: 'development',
+    output: {
+        publicPath: '/', // 静态资源文件引用时的路径（加在引用静态资源前面的）
+    },
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -23,6 +26,22 @@ const config = merge(commonConfig, {
                     'resolve-url-loader',
                     'sass-loader?sourceMap'
                 ],
+            },
+            {
+                test: /\.(png|jpe?g|ico|otf|gif|svg|woff|ttf|eot)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            // fallback: 'file-loader',
+                            // Default file-loader config
+                            name: '[path][name].[ext]',
+                            // outputPath: '/',
+                            // publicPath: '/'
+                        }
+                    }
+                ]
             },
         ]
     },
