@@ -91,7 +91,7 @@ class PageCarTest extends React.Component {
         const {questionMap} = this.state;
         return (
             <MView>
-                <embed height="0" width="0" src="http://img.tukuppt.com/preview_music/00/00/95/yulan-5b87c07c7da533189.mp3" style={{display: 'hidden'}}></embed>
+                {/*<embed height="0" width="0" src="http://img.tukuppt.com/preview_music/00/00/95/yulan-5b87c07c7da533189.mp3" style={{display: 'hidden'}}></embed>*/}
                 <div className="scroll pageCarTest">
 {/*                    <audio id="audio" src="./../../../../music/bgm.mp3" loop='loop' preload='preload'
                            autoPlay="autoplay">

@@ -53,7 +53,7 @@ class ResultCard extends React.Component {
                 <div className='pageCarTest-result-content'>
                 <div className="pageCarTest-result-rrc">
                     <div className="pageCarTest-result-rrcPic2"
-                         style={{backgroundImage: `url(./../../../../imgs/rrc/${random}.png)`}}
+                         style={{backgroundImage: `url(${require(`./../../../../imgs/rrc/${random}.png`)})`}}
                     />
                 </div>
                 <div className='pageCarTest-result-anwser'>
