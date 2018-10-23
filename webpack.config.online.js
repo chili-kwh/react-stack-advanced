@@ -63,7 +63,7 @@ const config = merge(commonConfig, {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(['dist-prepare']),
+        new CleanWebpackPlugin(['docs']),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional

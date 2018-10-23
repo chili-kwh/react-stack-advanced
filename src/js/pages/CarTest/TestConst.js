@@ -89,7 +89,6 @@ const QUESTIONS = {
             {desc: '韩系', toQues: 15},
             {desc: '美系', toQues: 16},
             {desc: '德系', toQues: 17},
-            // {desc: '其他自主品牌', toQues: 18},
         ]
     },
     12: {

@@ -30,6 +30,12 @@
     transform: translateY(0px);
     opacity: 1;
   }
+  .pageCarTest-summary-title{
+    .highlight{
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  }
 }
 
 .pageCarTest-ques {
@@ -93,15 +99,6 @@
   opacity: 0.9;
 }
 
-//.pageCarTest-quesBg {
-//  width: 80%;
-//  margin: 12% 10%;
-//
-//  padding-bottom: 108%;
-//  background: url("../../../imgs/carTest/bgb.png") no-repeat;
-//  background-size: contain;
-//}
-
 .pageCarTest-frontPage-btnWrapper {
   width: 100%;
   display: flex;
@@ -128,9 +125,6 @@
 .pageCarTest-result {
   height: 100%;
   background: rgb(254, 188, 64);
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: space-between;
   padding: 40px 0;
   &-title {
     color: #564538;
@@ -206,4 +200,62 @@
   position: absolute;
   //z-index: 1;
   top: -55px;
+}
+
+@keyframes arrow-down
+{
+  from {
+    transform: translate(-40px, 0px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(-40px, 20px);
+    opacity: 1;
+  }
+}
+
+.pageCarTest-result-next{
+  //position: relative;
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  //transform: translateX(-40px);
+  animation: arrow-down .6s infinite alternate;
+  &::before{
+    transform: rotate(42deg) translate(-32px);
+  }
+  &::after{
+    transform: rotate(-42deg) translate(32px);
+  }
+
+  &::before, &::after{
+    display: block;
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 8px;
+    background: rgba(180,180,180,0.6);
+  }
+
+}
+
+.pageCarTest-summary{
+  height: 100%;
+  background: rgb(254, 188, 64);
+  padding: 40px 0;
+  &-title {
+    color: #564538;
+    font-size: 22px;
+    line-height: 1.8;
+    text-align: center;
+    letter-spacing: 2.3px;
+    font-family: black;
+    .highlight{
+      color: #ff6903ba;
+      display: inline-block;
+      transition: all 1.8s ease-in-out;
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+  }
 }

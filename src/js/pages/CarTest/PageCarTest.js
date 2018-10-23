@@ -4,6 +4,7 @@ import {MView} from "../../components/index";
 import {TestCard} from "./TestCard";
 import {QUESTIONS, RESULTS} from "./TestConst";
 import {ResultCard} from "./ResultCard";
+import {SummaryCard} from "./SummaryCard";
 
 class PageCarTest extends React.Component {
 
@@ -19,11 +20,6 @@ class PageCarTest extends React.Component {
 
     componentDidMount() {
         this.initSwiper()
-        fetch('http://www.dandywei.com/car/query')
-            .then(res=>res.json())
-            .then(res=>{
-            console.log(res)
-        })
         // const bgmusic = document.getElementById('audio');
         // bgmusic.play()
     }
@@ -127,7 +123,13 @@ class PageCarTest extends React.Component {
                             {
                                 this.state.resultKey &&
                                 <div className="pageCarTest-swiper swiper-slide" key='resultPage'>
-                                    <ResultCard resultKey={this.state.resultKey}/>
+                                    <ResultCard resultKey={this.state.resultKey} handleNextTouch={()=>{this.mySwiper.slideNext()}}/>
+                                </div>
+                            }
+                            {
+                                this.state.resultKey &&
+                                <div className="pageCarTest-swiper swiper-slide" key='summaryPage'>
+                                    <SummaryCard resultKey={this.state.resultKey}/>
                                 </div>
                             }
                         </div>

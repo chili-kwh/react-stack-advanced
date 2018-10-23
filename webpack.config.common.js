@@ -19,8 +19,8 @@ const config = {
     output: {
         filename: '[name].[hash].js',
         //name代表entry对应的名字; hash代表 整个app打包完成后根据内容加上hash。一旦整个文件内容变更，hash就会变化
-        path: resolve('dist-prepare'),
-        publicPath: resolve('/'), // 静态资源文件引用时的路径（加在引用静态资源前面的）
+        path: resolve('docs'),
+        publicPath: '/', // 静态资源文件引用时的路径（加在引用静态资源前面的）
         chunkFilename: 'chunk.[name].[id].[chunkhash].js',
 
     },
