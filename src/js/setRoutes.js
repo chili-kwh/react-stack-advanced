@@ -21,3 +21,8 @@ export const routeReactPortal = new LRoute({
     component: () => import('./pages/PageReactPortal')
 });
 
+export const routeReactAnimate = new LRoute({
+    path: '/fe/react-animate',
+    component: () => import('./pages/pageAnimate')
+});
+
