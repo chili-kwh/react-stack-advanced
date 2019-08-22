@@ -23,6 +23,11 @@ export const routeReactPortal = new LRoute({
 
 export const routeReactAnimate = new LRoute({
     path: '/fe/react-animate',
-    component: () => import('./pages/pageAnimate')
+    component: () => import('./pages/PageAnimate')
+});
+
+export const routeReactCanvas = new LRoute({
+    path: '/fe/react-canvas',
+    component: () => import('./pages/PageCanvas')
 });
 

@@ -2,10 +2,12 @@
 // scss引入图片路径问题
 // resolution: 加入resolve-url-loader
 
+@import "pageCanvas";
+
 .test-pic {
   width: 100%;
   height: 380px;
-  background: url("../../../imgs/banner_flop.png");
+  //background: url("../../../imgs/banner_flop.png");
 }
 
 @font-face {
@@ -14,8 +16,8 @@
 }
 
 .App {
-  text-align: center;
-  font-family: 'campton-bold';
+  //text-align: center;
+  //font-family: 'campton-bold';
 }
 
 .App-logo {

@@ -1,0 +1,173 @@
+@import "./../shared/mixin";
+
+$front: './../../../imgs/front.png';
+$back: './../../../imgs/back.jpg';
+$bottle: './../../../imgs/bottle/bottle.png';
+$container: './../../../imgs/bottle/container.png';
+$wave: './../../../imgs/bottle/wave.gif';
+
+html {
+  //background-color: #240f54;
+  height: 2000px;
+}
+
+.wrap{
+  margin-top: 20px;
+}
+
+.wrapper {
+  background-color: #240f54;
+  position: relative;
+  margin-top: 100px;
+  padding-left: 10px;
+  perspective: 1000px;
+}
+
+@keyframes a1 {
+  0% {
+    transform: translate(-649px, -500px) rotate(45deg);
+  }
+  50% {
+    transform: translate(-800px, -500px) rotate(20deg);
+  }
+  100% {
+    transform: translate(-950px, -500px) rotate(10deg);
+  }
+}
+@keyframes a2 {
+  0% {
+    transform: translate(963px, 250px) rotate(-45deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(813px, 332px) rotate(20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(728px, 399px) rotate(10deg);
+    opacity: 0.1;
+  }
+}
+
+
+.front {
+  @include set-icon($front, 350, 400);
+}
+
+.container {
+  width: 350px;
+  height: 400px;
+}
+
+.back {
+  @include set-icon($back, 300, 391);
+}
+
+.front, .back {
+  @include flex-center();
+}
+
+.front-container {
+  //margin-left: 350px;
+
+}
+
+.back-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include flex-center();
+  //transform: scale(-1, 1) translateX(-100%);
+  transition: all .6s;
+
+  //transform: scale3d(-1, 1, 1) translate3d(-20%, 1px, 1px);
+  //transform-origin: 90% 50%;
+}
+
+.test {
+  transform: translate3d(20%, 1px, 1px) scale3d(-0, 0, 0);
+  opacity: 1;
+}
+
+.test1 {
+  transform: translate(-10%, -30%) rotate(90deg) scale(.5);
+  opacity: 0.1;
+}
+
+.cover {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  left: 0;
+  top: 0;
+  //background: rgba(255, 1, 100, .4);
+  animation: a1 1.5s forwards ease ;
+  overflow: hidden;
+}
+
+.anim {
+  animation: a2 1.5s forwards ease ;
+
+}
+
+
+.bottle-con{
+  margin-left: 30px;
+  height: 50px;
+  width: 50px;
+  //background: #240f54;
+  //position: relative;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 10;
+  top: 30px;
+  //left: 0;
+  right: 20px;
+
+  .poa{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .wave{
+    @include set-icon($wave, 50);
+    opacity: .4;
+    z-index: 3;
+  }
+
+  .bg{
+    @include set-icon($container, 50);
+    box-shadow: -2px 2px 6px -3px #FFE26E;
+    border-radius: 50%;
+    z-index: 1;
+    //bottom: -1px;
+  }
+
+  .bottle-lay{
+    height: 50px;
+    width: 70px;
+    bottom: 0;
+    right: 0;
+    //background: #f0f8ff6b;
+    @include flex-parent(flex-end, flex-end);
+    border-bottom-right-radius: 25px 50%;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .bottle{
+    @include set-icon($bottle, 61, 44);
+    animation: bottle-ani 1.63s linear alternate infinite ;
+
+  }
+
+  @keyframes bottle-ani {
+    from{
+      transform: rotate(0) translate(-1px, -3px);
+    }
+    to{
+      transform: translate(3.6px, -0.2px) rotate(20deg);
+    }
+  }
+}

@@ -1,0 +1,86 @@
+// 设置文字
+@mixin set-text($size,$color:#000,$lineHeight:($size+2)+px) {
+  font-size: $size+px;
+  color: $color;
+  line-height: $lineHeight;
+}
+
+@mixin flex-center($direction:column) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-flex-direction: $direction;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+}
+
+@mixin set-bg-img($url: '',$size:contain,$postion: center center) {
+  @if $url != '' {
+    background-image: url($url);
+  }
+  background-size: $size;
+  background-position: $postion;
+  background-repeat: no-repeat;
+}
+
+@mixin limit-lines($line, $display: -webkit-box) {
+  display: $display;
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  @include text-wrap();
+}
+
+@mixin text-wrap() {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+@mixin justify-content($option: space-between) {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: $option;
+  -webkit-justify-content: $option;
+}
+
+@mixin flex-parent($align: center, $justify: space-between,  $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  display: -webkit-flex;
+  -webkit-flex-direction: $direction;
+  -webkit-align-items: $align;
+  -webkit-justify-content: $justify;
+}
+
+@mixin set-icon($url, $width, $height: $width) {
+  width: $width+px;
+  height: $height+px;
+  @include set-bg-img($url);
+}
+
+@mixin set-icon-before($url, $width, $height, $marginRight:0) {
+  &::before {
+    display: inline-block;
+    content: '';
+    width: $width+px;
+    height: $height+px;
+    @include set-bg-img($url);
+    margin-right: $marginRight+px;
+  }
+}
+
+@mixin set-icon-absolute($url, $width, $height: $width) {
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: $width+px;
+    height: $height+px;
+    @include set-bg-img($url);
+  }
+}

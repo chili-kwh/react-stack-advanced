@@ -67,7 +67,7 @@ const config = {
             filename: 'index.html',
             template: './src/index.ejs',
             templateParameters: {
-                // a: '111'
+                a: ''
             }
         }),
     ],
