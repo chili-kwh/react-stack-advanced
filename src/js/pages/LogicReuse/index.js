@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Icon} from "../../components";
 import HocAutoShow from "./HOC";
+import AutoShow from "./renderProp";
 
 const FLOAT_ICON = 'http://a.58cdn.com.cn/app58/img/neighbourhood/springactivity/home/float_icon.png';
 
@@ -14,7 +15,7 @@ visible
 */
 
 function handleVisibilityChange(visible) {
-    console.log(visible)
+    console.log('visible: ' + visible)
 }
 
 function FixedIcon({visible = false}) {
@@ -42,11 +43,16 @@ class Index extends Component {
 
     }
 
-    /*renderIconHoc() {
+    renderIconProps() {
         return (
-            <FixedIcon></FixedIcon>
+            <AutoShow
+                showWhenScrollTo={200}
+                onVisibilityChange={handleVisibilityChange}
+            >
+                {(visible) => <FixedIcon visible={visible}/>}
+            </AutoShow>
         )
-    }*/
+    }
 
     render() {
         return (
@@ -54,6 +60,7 @@ class Index extends Component {
                 <div className="logicReuse-placeholder"/>
                 <div className="logicReuse-btn">300</div>
                 {this.renderIconHoc()}
+                {this.renderIconProps()}
 
             </div>
         );

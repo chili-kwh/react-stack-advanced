@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'underscore';
 
 
-function HocAutoShow(Component, options) {
+function HocAutoShow(Component) {
 
     return class AutoShow extends React.PureComponent {
         static propTypes = {
