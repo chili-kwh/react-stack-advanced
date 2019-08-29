@@ -8,16 +8,16 @@ class PageCanvas extends Component {
     renderBottle() {
         return (
             <div className='bottle-con'>
-                <div className="bg poa">
-                </div>
-                <div className="wave poa"></div>
+                <div className="bg poa"/>
                 <div className="bottle-lay poa">
-                    <div className="bottle"></div>
+                    <div className="bottle"/>
                 </div>
+                <div className="wave poa"/>
             </div>
         )
     }
 
+    // TODO 数据细节有待微调
     renderPageFlip() {
         return (
             <div className='wrapper'>
@@ -42,7 +42,7 @@ class PageCanvas extends Component {
         return (
             <div className='wrap'>
                 {this.renderBottle()}
-                {/*{this.renderPageFlip()}*/}
+                {this.renderPageFlip()}
             </div>
         )
     }
@@ -52,24 +52,3 @@ class PageCanvas extends Component {
 
 export default PageCanvas;
 
-
-/*    getGradientColors() {
-        return [
-            {color: "transparent", position: 0},
-            {color: "#000", position: 1}
-        ]
-    }
-
-
-    render() {
-        return (
-            <Group
-                // style={this.getStyle()}
-            >
-                <Gradient
-                    // style={this.getGradientStyle()}
-                    colorStops={this.getGradientColors()}
-                />
-            </Group>
-        );
-    }*/

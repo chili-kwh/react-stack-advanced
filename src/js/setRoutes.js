@@ -21,13 +21,8 @@ export const routeReactPortal = new LRoute({
     component: () => import('./pages/PageReactPortal')
 });
 
-export const routeReactAnimate = new LRoute({
-    path: '/fe/react-animate',
-    component: () => import('./pages/PageAnimate')
-});
-
-export const routeReactCanvas = new LRoute({
-    path: '/fe/react-canvas',
-    component: () => import('./pages/PageCanvas')
+export const routePageFlip = new LRoute({
+    path: '/page-flip',
+    component: () => import('./pages/PageFlip')
 });
 
