@@ -11,6 +11,8 @@ class PageHome extends React.Component {
         return (
             <div>
                 <Link to="/fe/react-portal">portal</Link>
+                <br/>
+                <Link to="/logic-reuse">logic-reuse</Link>
             </div>
         );
     }

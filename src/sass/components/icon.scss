@@ -1,0 +1,7 @@
+@import "./../shared/mixin";
+
+.icon{
+  @include set-bg-img('');
+  flex-shrink: 0;
+  flex-grow: 0;
+}
