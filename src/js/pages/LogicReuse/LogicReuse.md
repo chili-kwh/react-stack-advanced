@@ -18,6 +18,28 @@ React编程中的一个核心思想就是组件化。React里，组件是代码�
 - 主要用来解决生命周期逻辑和状态逻辑的复用问题。
 - 允许从外部扩展组件生命周期
 
+```javascript
+// 定义Mixin
+var Mixin1 = {
+  getMessage: function() {
+    return 'hello world';
+  }
+};
+var Mixin2 = {
+  componentDidMount: function() {
+    console.log('Mixin2.componentDidMount()');
+  }
+};
+
+// 用Mixin来增强现有组件
+var MyComponent = React.createClass({
+  mixins: [Mixin1, Mixin2],
+  render: function() {
+    return <div>{this.getMessage()}</div>;
+  }
+});
+```
+
 ##### 明显的缺陷
 
 - 打破了原有组件的封装，对原有的对象造成污染
@@ -37,6 +59,68 @@ React v15.5.0正式废弃React.createClass() API，移至create-react-class，�
 
 HOC概念类似于高阶函数，本质是一个`函数`，接受一个`组件`作为参数，经过装饰之后，返回一个新的`组件`。装饰的过程，就是将可复用的逻辑，附加到原有的组件上，可以是组件结构的扩展，也可以是功能的扩充。
 
+```javascript
+
+// 定义HOC
+function HocAutoShow(Component) {
+
+    return class AutoShow extends React.PureComponent {
+        static propTypes = {
+            showWhenScrollTo: PropTypes.number,
+            onVisibilityChange: PropTypes.func,
+        }
+
+        static defaultProps = {
+            showWhenScrollTo: 0,
+            onVisibilityChange: _.noop
+        }
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                show: false,
+            };
+        }
+
+        componentDidMount = async () => {
+            window.addEventListener('scroll', this.handleScroll);
+        }
+
+        componentDidUpdate() {
+            this.props.onVisibilityChange(this.state.show)
+        }
+
+        componentWillUnmount() {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
+
+        handleScroll = _.throttle(() => {
+            const show = window.scrollY > this.props.showWhenScrollTo;
+            if (show) {
+                this.setState({ show: true });
+            } else {
+                this.setState({ show: false });
+            }
+        }, 50)
+
+
+        render() {
+            return <Component visible={this.state.show} {...this.props} />;
+        }
+    };
+}
+
+// 使用
+    const HocIcon = HocAutoShow(FixedIcon)
+    
+    return (
+        <HocIcon
+            showWhenScrollTo={300}
+            onVisibilityChange={handleVisibilityChange}
+        />
+    )
+
+```
 
 ##### 优势
 
@@ -68,6 +152,67 @@ HOC 虽然没有那么多致命问题，但也存在一些小缺陷：
 更具体地说，render prop 是一个用于告知组件需要渲染什么内容的函数 prop。这项技术使我们共享行为非常容易。本质：子组件根据父组件调用`render prop函数`传入的参数动态决定渲染内容，这些参数可以是父组件的state/props等状态或函数等任何内容，实现了逻辑的传递和复用。
 该方案也规避了上述提到的很多缺陷。
 
+```javascript
+
+// 定义接受render prop 的组件
+
+class AutoShow extends React.PureComponent {
+    static propTypes = {
+        showWhenScrollTo: PropTypes.number,
+        onVisibilityChange: PropTypes.func,
+        children: PropTypes.func,
+    }
+
+    static defaultProps = {
+        showWhenScrollTo: 0,
+        onVisibilityChange: _.noop,
+        children: () => null
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            show: false,
+        };
+    }
+
+    componentDidMount = async () => {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentDidUpdate() {
+        this.props.onVisibilityChange(this.state.show)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = _.throttle(() => {
+        const show = window.scrollY > this.props.showWhenScrollTo;
+        if (show) {
+            this.setState({show: true});
+        } else {
+            this.setState({show: false});
+        }
+    }, 50)
+
+
+    render() {
+        return this.props.children(this.state.show)
+    }
+}
+    
+// 使用
+    <AutoShow
+        showWhenScrollTo={200}
+        onVisibilityChange={handleVisibilityChange}
+    >
+        {(visible) => <FixedIcon visible={visible}/>}
+    </AutoShow>
+
+```
+
 * * *
 
 #### HOC 与 Render Props 
@@ -91,6 +236,49 @@ HOC、Render Props 等基于组件组合的方案，相当于先把要复用的�
 这正是 Hooks 的思路：将函数作为最小的代码复用单元，同时内置一些模式以简化状态逻辑的复用
 
 Hook 可以帮助你将状态逻辑从组件中抽离出来，在不需要改变组件DOM结构层次的情况下，实现逻辑复用。只共享数据处理逻辑，不会共享数据本身。
+
+```javascript
+
+// 自定义Hook
+    function useAutoShow({showWhenScrollTo, onVisibilityChange}) {
+        const [visible, setVisible] = useState(false);
+    
+        useEffect(() => {
+    
+            const handleScroll = _.throttle(() => {
+                const show = window.scrollY > showWhenScrollTo;
+                if (show) {
+                    setVisible(true)
+                } else {
+                    setVisible(false)
+                }
+            }, 50)
+    
+            window.addEventListener('scroll', handleScroll);
+    
+            onVisibilityChange(visible);
+    
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            }
+        }, [visible]) // 第二个可选参数: 某些特定值在两次重渲染之间没有发生变化，React 跳过对 effect 的调用
+    
+        return visible;
+    }
+
+// 使用hook定义函数式组件 
+    function FixedIconHooked(props){
+        const visible = useAutoShow(props);
+        return <FixedIcon visible={visible}/>
+    }
+
+// 使用
+    <FixedIconHooked
+        showWhenScrollTo={300}
+        onVisibilityChange={handleVisibilityChange}
+    />
+
+```
 
 ##### 缺陷
 
