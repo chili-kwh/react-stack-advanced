@@ -7,9 +7,9 @@ import useAutoShow from "./useAutoShow";
 const FLOAT_ICON = 'http://a.58cdn.com.cn/app58/img/neighbourhood/springactivity/home/float_icon.png';
 
 /*
-Input props:
-onVisibilityChange
+Input:
 showWhenScrollTo
+onVisibilityChange
 
 Output:
 visible
@@ -74,9 +74,9 @@ class Index extends Component {
         return (
             <div className='logicReuse-container'>
                 <div className="logicReuse-placeholder"/>
-                <div className="logicReuse-btn">300</div>
+                <div className="logicReuse-btn"/>
 
-                {/*{this.renderIconHoc()}*/}
+                {this.renderIconHoc()}
                 {/*{this.renderIconProps()}*/}
                 {this.renderIconHook()}
             </div>

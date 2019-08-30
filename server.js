@@ -47,7 +47,7 @@ function createCompileDoneCallback() {
             hasLogged = true;
             setTimeout(() => {
 
-                let indexPageUrl = `${URI}/home`;
+                let indexPageUrl = `${URI}/fe/home`;
                 console.log(`
 =====================================
 Server start OK!
