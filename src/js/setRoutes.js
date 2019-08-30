@@ -26,3 +26,8 @@ export const routePageFlip = new LRoute({
     component: () => import('./pages/PageFlip')
 });
 
+export const routeLogicReuse = new LRoute({
+    path: '/logic-reuse',
+    component: () => import('./pages/LogicReuse')
+});
+

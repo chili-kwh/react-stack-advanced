@@ -5,12 +5,13 @@ import '../../sass/pages/App.scss';
 import {LRoute} from "../LRoute";
 import PageHome from "./PageHome";
 
+
 function MakeRoutes(allUrls) {
     let allRoutes = [];
     Object.keys(allUrls).forEach((key, i) => {
         const _route = allUrls[key];
         if(_route instanceof LRoute){
-            console.log(key);
+            // console.log(key);
             // console.log(_route);
             allRoutes.push(
                 <Route path={_route.path} component={_route.getComponent()} key={i}/>

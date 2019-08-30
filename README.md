@@ -15,3 +15,6 @@
   https://www.jianshu.com/p/697669781276
 
 
+- HOC／render Props - - 2019.8.30
+- React 模式
+    https://zhuanlan.zhihu.com/p/30905822
